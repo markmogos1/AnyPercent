@@ -1,0 +1,120 @@
+// Mark Mogos: github.com/markmogos/Programming-Languages/
+//Main Stuff
+program ::= statementList?
+
+statementList ::= statement | statement statementList
+
+statement ::= varDeclaration //Choosing to not have a 'declare' command for speed's sake. Assignment and Declaration are the same thing in this case, and
+| varAssignment //ask about how varDeclaration doesn't really exist in my language and it autodetects?
+| functionDeclaration
+| loopDeclaration
+| conditionalStatement
+| preMadeFunctions
+| expression
+
+
+//Premade Functions (Print&Arrays)
+
+preMadeFunctions ::= print | arrayEditFunctions
+
+arrayEditFunctions ::= arrayAdd | arrayDelete | arrayChange
+
+arrayAdd ::= "aa " IDENTIFIER INTEGER expression //For future self, thinking about adding some sort of symbol so I can add to the end of an array. Will do later if I find it necesary, just thought it'd be useful but not sure.
+
+arrayDelete ::= "ad " IDENTIFIER INTEGER
+
+arrayChange ::= "ac " IDENTIFIER INTEGER expression
+
+print ::= "p " + PRIMARY + "] "
+
+//Variable Declaration/Assignment
+
+varAssignment ::= IDENTIFIER "=" expression
+
+varDeclaration ::= IDENTIFIER "=" expression
+
+varType ::= "i" | "d" | "c" | "s" | "b"
+
+//Loops/Block Code
+
+loopDeclaration ::= forLoopDeclaration | whileLoops
+
+whileLoops ::= whileTrueLoopDeclaration | whileLoopDeclaration
+
+whileLoopDeclaration ::= "L w " expression block
+
+whileTrueLoopDeclaration ::= "L wt " statement " "
+
+forLoopDeclaration ::= "L f " loopVariableInitialization " " forLoopCondition " " forLoopVariableModifier " " statement " "
+
+loopVariableInitialization ::= varType NUMBER
+
+forLoopCondition ::= comparisonOperator expression//Change comparisonOperator to comparison function? Maybe not...
+
+forLoopVariableModifier ::= postUnaryOperator | binaryOperator expression
+
+block ::= " " statement " "
+
+//Conditionals:
+
+conditionalStatement ::= "i"{n} " " expression{n} " " block{n} " "
+                       | "i"{n} "e" " " expression{n} " " block{n+1} " "
+//n ::= [0-9]*
+
+
+//Function Declaration/Usage
+
+functionDeclaration ::= longFunctionDeclaration | shortFunctionDeclaration
+
+shortFunctionDeclaration ::= "(" parameterList ">" expression
+
+longFunctionDeclaration ::= consistencyIndicator? returnType openStatus IDENTIFIER "[" parameterList? " " functionBody
+
+functionBody ::= statementList? returnStatement statementList?
+
+returnStatement ::= "`" statement
+
+parameterList ::= varType IDENTIFIER
+                 | varType IDENTIFIER " " parameterList
+
+openStatus ::= "c" | "o"
+
+returnType ::= varType
+
+consistencyIndicator ::= "c" | "" //maybe should change this from c to something else? Just as a reminder to look at later if problems arise when coding.
+
+//Expression Shenanigans
+
+expression ::= binaryExpression
+             | unaryExpression
+             | PRIMARY
+
+functionCall ::= IDENTIFIER "[ " parameterList
+
+parenthesizedExpression ::= "(" expression ")"
+
+binaryExpression ::= PRIMARY binaryOperator expression
+
+unaryExpression ::= preUnaryOperator expression
+                  | PRIMARY postUnaryOperator
+
+//Operators/Primaries
+
+binaryOperator ::= "+" | "-" | "*" | "/" | "^" | "%"
+
+comparisonOperator ::= ">" | "<" | ">=" | "<=" | "==" | "!=" | "?" | "&"
+
+preUnaryOperator ::= "!"
+
+postUnaryOperator ::= "++" | "--" | "!"
+
+booleanLiteral ::= "true" | "false"
+
+PRIMARY ::= STRING | NUMBER | IDENTIFIER | booleanLiteral | functionCall | parenthesizedExpression
+
+
+
+
+
+
+

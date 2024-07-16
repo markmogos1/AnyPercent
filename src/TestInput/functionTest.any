@@ -1,0 +1,15 @@
+x=4
+d I o dbl[I x] [x = x * 2]
+
+p dbl[x] ]
+p x] 
+//ensuring that x is only changed  inside the environment (should be 8, then 4 respectively)//
+
+d n I c sum[D x D y] [
+    x + y
+]
+p sum[x 4]]
+
+
+
+

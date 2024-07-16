@@ -1,0 +1,9 @@
+x=4
+i i e 
+x<4 
+x>4 
+[p "x is less than 4!"] ]
+[p "x is greater than 4!"]]
+[p "x is equal to 4!"]]
+
+

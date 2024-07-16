@@ -1,0 +1,17 @@
+p 2==2]
+p 2==2.2]
+p 1==true]
+p 2=="jump"]
+
+p 2.0==2]
+p 2.2==2.2]
+p 2.2==false]
+p 2.2=="jump"]
+
+p "two"==2]
+p "two"==2.2]
+p "two"=="four"]
+
+p true==2]
+p true==2.2]
+p true==false]

@@ -1,0 +1,11 @@
+i i i e true true false [ p "1st statement true"] ] [ p "2nd statement true"] ] [ p "3rd statement true"] ] [ p "4th statement true"] ]
+
+i i i e false true true [ p "1st statement true"] ] [ p "2nd statement true"] ] [ p "3rd statement true"] ] [ p "else statement true"] ]
+
+
+i i i e false false true [ p "1st statement true"] ] [ p "2nd statement true"] ] [ p "3rd statement true"] ] [ p "else statement true"] ]
+
+i i i e false false false [ p "1st statement true"] ] [ p "2nd statement true"] ] [ p "3rd statement true"] ] [ p "4th statement true"] ]
+
+i e false [ p "x+2"] ] [p "x+1"]]
+i false [ p "x+3"] ]

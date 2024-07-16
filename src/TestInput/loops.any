@@ -1,0 +1,19 @@
+x=3
+
+L w x<5 [
+    x = x + 1
+    p "x is not 5" ]
+]
+
+L f x=1 x<4 x++ [p "x is increasing by 1 each time"]]
+
+l=5
+
+L f x=0 x<16 x++ [
+    p "l is increasing by 1 each time"]
+    l = l + 1
+    ]
+p "l is: " + l]
+
+
+

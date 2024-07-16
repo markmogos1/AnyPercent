@@ -1,0 +1,23 @@
+p 2-2]
+p 2-2.2]
+p 2-true]
+
+
+p 2.2-2]
+p 2.2-2.2]
+p 2.2-false]
+
+p "two"-"four"]
+
+p true-2]
+p true-2.2]
+
+
+//p 2-"jump"]//
+//p 2.2-"jump"]//
+//p "two"-2]//
+//p "two"-2.2]//
+//p "two"-true]//
+//p true-false]//
+//p true-"false"]//
+//These all are unsupported cross type operations. Feel free to copy and paste 1 at a time to see that the errors work as they should.//

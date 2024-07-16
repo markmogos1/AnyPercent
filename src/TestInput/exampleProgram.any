@@ -1,0 +1,42 @@
+d n I c sum [I x I y] [x+y] 
+
+x = sum [3 2]
+
+p x]
+
+d S o dbl [S x] [x*2] 
+
+p "boing!"] 
+
+p 13+4] 
+
+x = ["b" + x * "oioi"]
+x = x + "ng" 
+
+p x]
+
+p "b"]
+L f z=0 z<5 z++ [ p "oi"] ]
+p "ng!"] 
+grade = 89
+i i i e grade < 70 grade < 80 grade < 90 [p "You got an F"]] [p "You got a C"]] [p "You got a B"]] [p "You got an A!"]]
+p 3^2]
+a=16
+b=14
+g=12
+g = g * [a<=b] 
+g = g - true 
+p g]
+bol = true
+x = 15
+x = x * [1 - [2 * bol]]
+
+p x]
+
+bone  = true
+btwo = false
+bthree = bone + btwo
+p bthree]
+
+p bone * btwo] 
+//above prints true if both are true, equivalent to AND operator. Can use to recreate AND operator :)//

@@ -1,0 +1,2 @@
+x = 4
+i i e x<16 x>20 [p "x is less than 16"]] [p "x is greater than 20"]] [p "x is probably between 20 and 16"]]
