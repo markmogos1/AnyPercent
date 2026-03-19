@@ -1,0 +1,22 @@
+p 2+3]
+p 10-4]
+p 6*7]
+p 8/2]
+p 9%4]
+p 2^3]
+p 3<5]
+p 5==5]
+p "go"+"al"]
+
+i e true [p "if-true"]] [p "if-false"]]
+i e false [p "if2-true"]] [p "if2-false"]]
+i false [p "dead-if"]]
+
+L w false [p "dead-while"]]
+
+x=5
+y=x+3
+p x+2]
+p y]
+p x+y]
+p "done"]

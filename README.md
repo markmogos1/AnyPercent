@@ -6,6 +6,34 @@ The inspiration for this language came to me when I was watching a random coding
 
 A note before you begin reading. Spaces beyond one space do not matter at all and are skipped over, as well as line breaks. Feel free to use them though for organization purposes, and legibility, but if you're trying to go fast why bother!
 
+## Optimizer (Quick Overview)
+
+This project now includes a small AST optimizer pass that runs by default before evaluation.
+
+Current optimizations:
+- constant folding (eg: `2+3` -> `5`)
+- constant propagation in statement lists (eg: `x=5`, `y=x+3` -> `y=8`)
+- removes reduntant "if" checks (eg. if 5 = 5)
+- dead `while false` loop removal
+
+How to run:
+
+```bash
+javac -d out $(find src -name "*.java")
+java -cp out AnyPercent.AnyPercent src/TestInput/optimizer.any
+```
+
+Disable optimizer for comparison:
+
+```bash
+java -cp out AnyPercent.AnyPercent --no-opt src/TestInput/optimizer.any
+```
+
+How to confirm it is actually optimizing:
+- compare optimized vs `--no-opt` parse tree output (optimized should contain fewer operation nodes)
+- compare final program output values (they should match)
+- check the optimizer summary line printed at runtime (folded/propagated/pruned counts)
+
 ## Variables
 
 To declare a variable, you write the name of the variable followed by an equals, followed by the content of the variable. It can be done like this:

@@ -11,22 +11,23 @@ import Environment.Environment;
 import Evaluation.Evaluator;
 import LexicalAnalysis.Lexeme;
 import LexicalAnalysis.Lexer;
+import Optimization.Optimizer;
 import Recognizing.Parser;
-
-import static LexicalAnalysis.Type.*;
 
 
 
 public class AnyPercent {
 private static final ArrayList<String> syntaxErrorMessages = new ArrayList<>(); 
 private static final ArrayList<String> runtimeErrorMessages = new ArrayList<>(); 
+private static final boolean printOptimizationSummary = true;
 
     public static void main (String[] args) throws IOException {
         
         try {
-            if (args.length == 1) runFile(args[0]);
+            if (args.length == 1) runFile(args[0], true);
+            else if (args.length == 2 && args[0].equals("--no-opt")) runFile(args[1], false);
             else {
-                System.out.println("How to use: AnyPercent[path to .any file]");
+                System.out.println("How to use: AnyPercent[path to .any file] OR AnyPercent --no-opt [path to .any file]");
                 System.exit(64);
             }
         } catch (IOException exception) {
@@ -55,7 +56,7 @@ private static final ArrayList<String> runtimeErrorMessages = new ArrayList<>();
         byte[] bytes = Files.readAllBytes(Paths.get(path));
         return new String(bytes, Charset.defaultCharset());
     }
-    private static void runFile(String path) throws IOException {
+    private static void runFile(String path, boolean optimize) throws IOException {
         System.out.println("Running " + path + "...");
         String source = getSourceCodeFromFile(path).replaceAll("//.*//", "");
 
@@ -67,12 +68,21 @@ private static final ArrayList<String> runtimeErrorMessages = new ArrayList<>();
         //Parsing
         Parser parser = new Parser(lexemes);
         Lexeme programParseTree = parser.program();
+
+        if (optimize) {
+            Optimizer optimizer = new Optimizer();
+            programParseTree = optimizer.optimize(programParseTree);
+            if (printOptimizationSummary) {
+                System.out.println(optimizer.getSummary());
+            }
+        }
+
         programParseTree.printAsParseTree();
         printErrors();
 
         Environment globalEnvironment = new Environment();
         Evaluator evaluator = new Evaluator();
-        Lexeme programResult = evaluator.eval(programParseTree, globalEnvironment);
+        evaluator.eval(programParseTree, globalEnvironment);
         // System.out.println("Program Result: \n" + programResult);
         printErrors();
     }
